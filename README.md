@@ -22,14 +22,6 @@ Fabric is not just a tool; it's a transformative step towards integrating the po
    `pip install -r requirements.txt`
 5. copy to path
    `echo export PATH=$PATH:$(pwd)` >> .bashrc`
-6. copy your chatgpt api key to .env in the directory root
-   `OPENAI_API_KEY=[your_api_key]`
-
-# Server installation
-
-2. from the application root
-   `cd server`
-   `flask --app run.py init-db`
 
 ## Usage
 
@@ -43,7 +35,7 @@ Options include:
 --output, -o: Save the response to a file.
 --stream, -s: Stream output to another application.
 --pattern, -p: Select the module for analysis.
---server, -S: Enable server mode.
+--server, -S: Enable server mode. defaults to 127.0.0.1:5000
 --domain, -d: Specify the domain in server mode.
 --port, -P: Specify the port in server mode.
 
@@ -79,13 +71,12 @@ TAKEAWAYS:
 
 # Server Mode
 
-1. running `febric --server --domain [domain] --port [port]` will start a gunicorn server, allowing you to create a personal api. This server uses both traditional api endpoints and websockets for a great experience. Use cases include iphone shortcuts and creating an api for your web site. The server is gunicorn with python flask
-2. update the jwt in config.yaml file
+1. running `febric --server --domain [domain] --port [port]` will start a gunicorn server, allowing you to create a personal api. This server uses both traditional api endpoints and websockets for a great experience. Use cases include iphone shortcuts and creating an api for your web site. The server is gunicorn with python flask. There is also a small web frontend accessable to http://[server]:[port]
 
 # Remote mode
 
 1. if you make a config.yaml file in the directory root, the tool will now be in remote mode. Instead of directly querying the chatgpt server, you can query a remote fabric server (including your own server).
-2. NOTE: if you are accessing a server behind ssl (https) you need to change `self.summarizestream = f"ws://{domain}:{port}"` to `self.summarizestream = f"wss://{domain}:{port}"`
+
 
 Contributing
 
