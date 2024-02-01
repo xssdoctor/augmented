@@ -1,0 +1,5 @@
+# make yaml file with domain name, port number
+
+server:
+  domain: "127.0.0.1"
+  port: 5000
